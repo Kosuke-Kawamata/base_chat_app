@@ -1,0 +1,19 @@
+h2 チャットルームへようこそ！！
+h3 = @user.id
+.container
+  = form_with  model: @conversation do |f|
+    = f.text_field :message
+    = f.hidden_field :room_id
+    = f.submit '投稿', class: 'btn btn-primary'
+
+  table.table.mouse-hover
+    thead
+      tr
+        th 投稿者
+        th メッセージ
+    tbody
+      tr 
+        - @conversations.each do |c|
+          td = c.user.name
+          td = c.message
+

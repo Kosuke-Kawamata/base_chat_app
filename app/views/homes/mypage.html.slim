@@ -1,0 +1,6 @@
+h2 マイページ
+.container.mt-5
+  p = current_user.name
+  p = current_user.email
+  p = link_to 'ユーザーリストへ', users_path
+  p = link_to 'ログアウト', destroy_user_session_path, method: :delete

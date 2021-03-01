@@ -1,0 +1,23 @@
+h2 チャットルームへようこそ！！
+h3 = "ユーザーid: #{@user.id}"
+.container
+  = form_with  model: @conversation do |f|
+    = f.text_field :message
+    = f.hidden_field :room_id
+    = f.submit '投稿', class: 'btn btn-primary ml-2'
+
+  table.table.mouse-hover
+    thead
+      tr
+        th 投稿者
+        th メッセージ
+        th 投稿日
+    tbody
+      - @conversations.each do |c|
+       tr 
+        td = c.user.name
+        td = c.message
+        td = c.created_at.to_s(:datetime_jp)
+
+  p = link_to 'ユーザーリストへ', users_path
+  p = link_to 'マイページへ', homes_mypage_path

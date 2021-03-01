@@ -1,0 +1,19 @@
+h2 ユーザー詳細画面
+.container
+  table.table.mouse-hover
+    thead
+      tr
+        th  名前
+        th  メールアドレス
+        th
+        th
+    tbody
+      tr
+        td = @user.name
+        td = @user.email 
+        -if current_user != @user
+          td = link_to 'チャットへ',conversation_path(@user.id)
+        td = link_to 'ユーザーの削除', user_path(@user),method: :delete, method: :delete, data: {confirm: "本当に削除しますか？"} 
+
+  p = link_to '戻る', users_path
+  

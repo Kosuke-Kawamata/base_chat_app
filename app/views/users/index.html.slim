@@ -1,0 +1,16 @@
+h2 ユーザー一覧画面
+.container.mt-5
+  table.table.table-hover
+    thead
+      tr
+        th ユーザー名
+        th メールアドレス
+    tbody 
+      - @users.each do |user|
+        tr
+          td = link_to user.name, user_path(user)
+          td = user.email
+        
+  = link_to 'マイページへ', homes_mypage_path
+
+        
